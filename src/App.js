@@ -21,15 +21,14 @@ class App extends Component {
 
   render() {
     const { monsters, searchField } = this.state
-    // eslint-disable-next-line
     const filteredMonsters = monsters.filter(monster => {
-      monster.name.toLowerCase().includes(searchField.toLowerCase())
+      return monster.name.toLowerCase().includes(searchField.toLowerCase())
     })
     return (
       <div className="App">
         <SearchBox 
           placeholder='search monsters'
-          handleChange={e => this.setState({ searchField: filteredMonsters })}
+          handleChange={e => this.setState({ searchField: e.target.value })}
         />
         <CardList monsters={filteredMonsters} />
       </div>
